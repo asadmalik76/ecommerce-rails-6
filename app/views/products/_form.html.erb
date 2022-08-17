@@ -1,0 +1,86 @@
+<%= form_with model: product, multipart: true do |form| %>
+
+<div class="row">
+<div class="col-md-6">
+ <div class="form-group">
+    <%= form.label :name %><br>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+</div>
+
+<div class="col-md-6">
+ <div class="form-group">
+    <%= form.label :description %><br>
+    <%= form.text_area :description, class: "form-control" %>
+</div>
+</div>
+
+<div class="col-md-6">
+ <div class="form-group">
+    <%= form.label :price %><br>
+    <%= form.number_field :price, class: "form-control" %>
+  </div>
+</div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+    <%= form.label :quantity %><br>
+    <%= form.number_field :quantity, class: "form-control" %>
+  </div>
+  </div>
+
+  <div class="col-md-6">
+  <div class="form-group">
+    <%= form.label :category_id %><br>
+    <%= form.select(:category_id, options_for_select(Category.all.map{|c|[c.name, c.id]}), {}, { :class => 'form-control' }) %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+  <%= form.label :cover_image %><br />
+<%= form.file_field :main_image %>
+  </div></div>
+
+
+
+  <div class="col-md-6">
+    <div class="form-group">
+  <%= form.label :images %><br />
+<%= form.file_field :images, multiple: true %>
+  </div></div>
+
+<% if @product.images.attached? %>
+  <% @product.images.each do |ph| %>
+    <%= form.hidden_field :images, multiple: true, value: ph.signed_id %>
+  <% end %>
+<% end %>
+
+  <div class="col-md-6">
+  <div class="form-group">
+    <%= form.label :brand_id %><br>
+    <%= form.select(:brand_id, options_for_select(Brand.all.map{|c|[c.name, c.id]}), {}, { :class => 'form-control' }) %>
+  </div>
+  </div>
+
+  <div class="col-md-6">
+   <div class="form-group">
+    <%= form.label :status %><br>
+    <%= form.select(:status,  ["available", "outofstock", "draft"], {}, { :class => 'form-control' }) %>
+  </div>
+  </div>
+
+
+  <div class="col-md-6">
+  <div class="form-group">
+
+ <%= form.submit class: "btn btn-primary" %>
+  </div>
+  </div>
+
+  <div>
+
+  </div>
+
+  </div>
+<% end %>

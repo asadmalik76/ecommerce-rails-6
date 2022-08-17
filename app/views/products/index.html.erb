@@ -1,0 +1,53 @@
+<%= render "shared/seller_menu" %>
+<div class="col-md-10">
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<%= link_to "New Product", new_product_path,  class: "btn btn-success mb-1"  %>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Brand</th>
+      <th scope="col">status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |product| %>
+  <tr>
+  <td>#</td>
+  <% if product.main_image.attached? %>
+  <td style="width:20px"><%= image_tag product.main_image, class: "img img-thumbnail" %></td>
+  <% else %>
+  <td><p>No image</p></td>
+  <% end %>
+
+  <td><%= product.name %></td>
+
+  <td><%= product.category.name %></td>
+
+  <td><%= product.price %></td>
+
+  <td><%= product.quantity %></td>
+
+  <td><%= product.brand.name %></td>
+  <td><span class="badge badge-primary"><%= product.status %></span></td>
+  <td class="d-flex">
+  <%= link_to "Edit", edit_product_path(product), class: "btn btn-success btn-sm" %>
+  <%= button_to "Delete",  product_path(product), method: :delete, class: "btn btn-warning btn-sm"  %>
+
+  </td>
+  </tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+</div>
+</div>

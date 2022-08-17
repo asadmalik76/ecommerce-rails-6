@@ -1,0 +1,18 @@
+<%= render "shared/slider" %>
+<div class="container-fluid">
+<section class="product mt-5 mb-5">
+<div class="row">
+<div class="col-md-4">
+<%= render 'shared/side_menu', categories: @categories, brands: @brands %>
+</div>
+<div class="col-md-8">
+<div class="row">
+<% @products.each do |product|%>
+<%= render "shared/product", model: product %>
+<% end %>
+</div>
+
+</div>
+</div>
+</div>
+</section>
