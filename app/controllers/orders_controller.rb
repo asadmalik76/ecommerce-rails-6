@@ -48,6 +48,19 @@ class OrdersController < ApplicationController
     render 'orders/show'
   end
 
+  def order_products
+    @products = current_user.products
+    @order_items = OrderItem.where(product_id: @products.ids)
+  end
+
+  def order_product_status
+    @order_item = OrderItem.find(params[:item_id])
+    @order_item.status = params[:status]
+    @order_item.save
+    session['flash'] = 'Order Product Update successfully'
+    redirect_to order_products_path
+  end
+
   def destroy
     @order = Order.find(params[:id])
     @order.destroy

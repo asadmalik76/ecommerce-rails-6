@@ -2,7 +2,7 @@
 
 # Products CRUD
 class ProductsController < ApplicationController
-  before_action :authenticate_user!,except: %i[show]
+  before_action :authenticate_user!, except: %i[show]
   before_action :load_product, only: %i[edit update destroy]
   before_action :load_seller_products, only: %i[index]
 
@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find_by(slug: params[:id])
     @comments = @product.comments
-    @comment = Comment.new
+    @comment = @product.comments.build
     render 'index/product'
   end
 
@@ -41,8 +41,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    flash[:success] = 'Product Destroyed'
+    if @product.destroy
+      flash[:success] = 'Product Destroyed'
+    else
+      flash[:error] = 'Could not delete product'
+    end
     redirect_to products_path
   end
 

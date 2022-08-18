@@ -14,10 +14,7 @@ class CommentsController < ApplicationController
     @product = @comment.product
     respond_to do |format|
       format.html { redirect_to @product }
-      format.js do
-        render template: 'comments/edit.js.erb',
-               layout: false
-      end
+      format.js {}
     end
   end
 
@@ -29,10 +26,7 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         format.html { redirect_to @product }
-        format.js do
-          render template: 'comments/create.js.erb',
-                 layout: false
-        end
+        format.js {}
       end
     else
       flash[:alert] = 'Comment failed to save...'
@@ -46,10 +40,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       respond_to do |format|
         format.html { redirect_to @comment.product }
-        format.js do
-          render template: 'comments/update.js.erb',
-                 layout: false
-        end
+        format.js {}
       end
     else
       flash[:alert] = 'Comment failed to update...'
@@ -64,14 +55,11 @@ class CommentsController < ApplicationController
     if @comment.delete
       respond_to do |format|
         format.html { redirect_to @product }
-        format.js do
-          render template: 'comments/destroy.js.erb',
-                 layout: false
-        end
+        format.js {}
       end
     else
       flash[:alert] = 'Comment failed to delete...'
-      redirect_to root_path
+      redirect_to @product
     end
   end
 

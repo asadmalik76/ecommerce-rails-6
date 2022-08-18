@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
   enum status: %i[draft pending processing delivered]
-  # attribute :status, :integer, default: 'draft'
   belongs_to :user
   has_many :order_items
   before_create :add_order_id

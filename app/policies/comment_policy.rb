@@ -2,7 +2,7 @@
 
 # Products Authorization policy for the user
 class CommentPolicy
-  attr_reader :user, :record
+  attr_reader :user, :record, :product
 
   def initialize(user, record)
     @user = user
@@ -11,7 +11,9 @@ class CommentPolicy
 
   def index?; end
 
-  def show?; end
+  def show?
+    !Comment.find_by(product_id: @record.product_id, user_id: @user.id).present?
+  end
 
   def create?
     authorize_seller?
@@ -30,7 +32,7 @@ class CommentPolicy
   end
 
   def destroy?
-    user.has_role? :seller
+    authorize_user?
   end
 
   private

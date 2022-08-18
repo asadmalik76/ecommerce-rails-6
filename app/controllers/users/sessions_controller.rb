@@ -9,9 +9,15 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+    if (current_user.has_role? :seller) && !session[:cart_id].nil?
+      @cart = Cart.find(session[:cart_id])
+      @cart.cart_items.each do |cart_item|
+        cart_item.destroy if cart_item.product.user_id == current_user.id
+      end
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy

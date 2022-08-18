@@ -10,23 +10,19 @@ class CartItemsController < ApplicationController
 
   def new; end
 
-  # TODO: Improve this method
   def create
     if @cart.cart_items.find_by(product_id: @item.id)
       @cart_item = @cart.cart_items.find_by(product_id: @item.id)
       @cart_item.quantity += 1
-      @cart_item.save
-      render plain: 'success'
     else
       @cart_item = CartItem.new(
-        cart_id: @cart.id, product_id: @item.id, quantity: 1
-      )
-      authorize @cart_item
-      if @cart_item.save
-        render plain: 'success'
-      else
-        render plain: 'failed'
-      end
+        cart_id: @cart.id, product_id: @item.id, quantity: 1)
+      authorize @cart_item if user_signed_in?
+    end
+    if @cart_item.save
+      render plain: 'success'
+    else
+      render plain: 'failed'
     end
   end
 
@@ -50,7 +46,6 @@ class CartItemsController < ApplicationController
 
   private
 
-  # TODO: Improve this
   def load_cart
     if session[:cart_id]
       @cart = Cart.find(session[:cart_id])

@@ -3,7 +3,6 @@
 		<div class="col-md-5 pr-2">
 			<div class="card">
 				<div class="demo">
-
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -41,18 +40,17 @@
 			</div>
 			<div class="card mt-2">
 		<div class="comment-section" id="comment_section">
-		<%= render @product.comments %>
-
-
+<%= render @comments.reload %>
+<% if policy(@comment).show? %>
 <div class="comment-form" id="new_comment">
-<% if user_signed_in?  %>
 	<%= form_for [@product, @comment], remote: :true do |f| %>
 		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 		<%= f.text_field :content, class: "form-control" %>
 		<%= f.submit 'Create' %>
 	<% end %>
+
+			</div>
 <% end %>
-					</div>
 					<hr>
 				</div>
 			</div>

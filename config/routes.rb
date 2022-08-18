@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   resources :orders
   resources :charges, only: %i[new create]
 
-
+  get '/search_products', to: 'index#search_products', as: 'search_products'
+  get '/order_products', to: 'orders#order_products', as: 'order_products'
+  post '/order_product/status', to: 'orders#order_product_status', as: 'order_product_status'
   get '/all_products', to: 'index#all_products', as: 'all_products'
   post '/apply_coupon', to: 'orders#apply_coupon', as: 'apply_coupon'
   get '/myorders', to: 'orders#myorders', as: 'myorders'

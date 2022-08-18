@@ -57,7 +57,6 @@
       });
     }
     if (quantity == 0){
-      alert(quantity);
       if (confirm('Do you want to remove this item?')) {
         $.ajaxSetup({
           headers: {
@@ -75,6 +74,7 @@
           }
         });
       }
+      $('#checkout_form').hide();
 
     }
   }
@@ -97,5 +97,7 @@
           }
         }
       });
+
+      $('#checkout_form').hide();
     }
 }

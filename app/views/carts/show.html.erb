@@ -12,7 +12,7 @@
             <th scope="col">Image</th>
             <th scope="col">Product</th>
             <th scope="col">Price</th>
-          <th scope="col">Quantity</th>
+            <th scope="col">Quantity</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -52,8 +52,8 @@
 
         </tbody>
       </table>
-      <%= form_for :order, url: '/orders' , method: :post do |f|%>
-      <%= f.submit %>
+      <%= form_for :order, url: '/orders' , method: :post ,  html: {id: 'checkout_form'} do |f|%>
+      <%= f.submit  %>
       <% end %>
     <% else %>
     <h4 class="text text-center">Cart is Empty</h4>

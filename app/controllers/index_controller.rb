@@ -2,8 +2,8 @@
 
 # Website Pages
 class IndexController < ApplicationController
-  before_action :load_categories, only: %i[index all_products brand_products category_products]
-  before_action :load_brands, only: %i[index all_products brand_products category_products]
+  before_action :load_categories, only: %i[index all_products brand_products category_products search_products]
+  before_action :load_brands, only: %i[index all_products brand_products category_products search_products]
   before_action :load_products, only: %i[index all_products brand_products category_products]
 
   def index; end
@@ -27,6 +27,11 @@ class IndexController < ApplicationController
   def category_products
     @category = Category.find_by(slug: params[:slug])
     @products = @category.products
+    render 'index/all_products'
+  end
+
+  def search_products
+    @products = Product.where('name LIKE ?', "%#{params[:query]}%")
     render 'index/all_products'
   end
 

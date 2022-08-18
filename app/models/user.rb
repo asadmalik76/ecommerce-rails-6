@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   before_save :set_full_name
   before_save :set_default_avatar
+
   has_many :products
   has_many :orders
   has_many :comments
@@ -16,7 +17,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def set_full_name
-    self.full_name = "#{@first_name} #{@last_name}"
+    if !full_name.present? && full_name!="#{@first_name} #{@last_name}"
+     self.full_name = "#{@first_name} #{@last_name}"
+    end
   end
 
   def set_default_avatar
@@ -33,5 +36,4 @@ class User < ApplicationRecord
   # def last_name
   #   full_name.split(' ')[1]
   # end
-
 end

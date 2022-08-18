@@ -19,21 +19,20 @@
           <%= link_to "Cart", carts_path, class: "nav-link" %>
       </li>
     </ul>
-     <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+  <%= form_with(url: search_products_path(), method: :get, class: "d-flex" )  do |f| %>
+  <%= f.text_field :query , class: "form-control me-2" %>
+  <%= f.submit 'Search', class: "btn btn-outline-success" %>
+<% end %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-
       <%  if user_signed_in? %>
-
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        <div class="profile-img">
-       <%# <% if current_user.avatar %>
-        <%# <%= image_tag current_user.avatar, class: "rounded-circle", style: "width: 20px; height:20px" %>
-        <%# <% end %>
+        <% if current_user.avatar %>
+        <%= image_tag current_user.avatar, class: "rounded-circle", style: "width: 20px; height:20px" %>
+        <% end %>
        </div>
           <%=  current_user.full_name %>
         </a>
@@ -42,14 +41,16 @@
             <%= link_to "Products", products_path, class: "dropdown-item" %>
             <%= link_to "Categories", categories_path, class: "dropdown-item" %>
             <%= link_to "Brands", brands_path, class: "dropdown-item" %>
-            <%= link_to "Orders", orders_path, class: "dropdown-item" %>
+            <%= link_to "Orders", order_products_path, class: "dropdown-item" %>
             <%= link_to "My Orders", myorders_path, class: "dropdown-item" %>
             <%= link_to "Profile", edit_user_registration_path() , class: "dropdown-item" %>
           </div>
         <% else %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to "My Orders", myorders_path, class: "dropdown-item" %>
+            <%= link_to "Profile", edit_user_registration_path() , class: "dropdown-item" %>
           </div>
+
         <% end %>
       </li>
       <li class="nav-item">

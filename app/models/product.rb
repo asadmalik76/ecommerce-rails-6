@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :brand
   belongs_to :user
+  has_many :order_items
   has_one_attached :main_image
   has_many_attached :images
   has_many :comments

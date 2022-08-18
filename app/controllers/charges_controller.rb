@@ -31,4 +31,3 @@ class ChargesController < ApplicationController
     flash[:error] = exception.message
   end
 end
-
