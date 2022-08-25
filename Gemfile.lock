@@ -60,8 +60,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
@@ -87,7 +87,16 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.5.0)
+    docile (1.4.0)
     erubi (1.11.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (2.22.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -109,7 +118,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    minitest (5.16.2)
+    minitest (5.16.0)
     msgpack (1.5.4)
     nio4r (2.5.8)
     nokogiri (1.13.8-x86_64-linux)
@@ -119,7 +128,7 @@ GEM
     parser (3.1.2.1)
       ast (~> 2.4.1)
     pg (1.4.3)
-    public_suffix (4.0.7)
+    public_suffix (5.0.0)
     puma (5.6.4)
       nio4r (~> 2.0)
     pundit (2.2.0)
@@ -147,6 +156,10 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.6.1)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -169,6 +182,23 @@ GEM
       railties (>= 5.0)
     rexml (3.2.5)
     rolify (6.0.0)
+    rspec-core (3.11.0)
+      rspec-support (~> 3.11.0)
+    rspec-expectations (3.11.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-mocks (3.11.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-rails (4.0.2)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.10)
+      rspec-expectations (~> 3.10)
+      rspec-mocks (~> 3.10)
+      rspec-support (~> 3.10)
+    rspec-support (3.11.0)
     rubocop (1.35.0)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -199,6 +229,20 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    shoulda (4.0.0)
+      shoulda-context (~> 2.0)
+      shoulda-matchers (~> 4.0)
+    shoulda-callback-matchers (1.1.4)
+      activesupport (>= 3)
+    shoulda-context (2.0.0)
+    shoulda-matchers (4.5.1)
+      activesupport (>= 4.2.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     spring (4.0.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -249,6 +293,9 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  factory_bot
+  factory_bot_rails
+  faker
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg
@@ -256,10 +303,17 @@ DEPENDENCIES
   pundit
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.5, >= 6.1.5.1)
+  rails-controller-testing
   rolify
+  rspec-rails (~> 4.0.1)
   rubocop
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
+  shoulda
+  shoulda-callback-matchers (~> 1.1, >= 1.1.4)
+  shoulda-context
+  shoulda-matchers
+  simplecov
   spring
   stripe
   turbolinks (~> 5)

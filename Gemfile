@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
-
-
-
 gem "byebug"
 gem 'devise'
 gem "pundit"
@@ -57,10 +54,22 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
+  gem 'simplecov'
+  gem 'factory_bot'
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.4'
+  gem 'shoulda'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
+  gem 'shoulda-context'
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'faker'
 end
 
+group :development, :test do
+  gem 'factory_bot_rails'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

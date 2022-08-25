@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-
   resource :carts
   resources :cart_items
   resources :orders

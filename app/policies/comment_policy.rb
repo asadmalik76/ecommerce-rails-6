@@ -12,7 +12,8 @@ class CommentPolicy
   def index?; end
 
   def show?
-    !Comment.find_by(product_id: @record.product_id, user_id: @user.id).present?
+    true
+    # !Comment.find_by(product_id: @record.product_id, user_id: @user.id).present?
   end
 
   def create?
