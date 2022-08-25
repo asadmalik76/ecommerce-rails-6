@@ -1,0 +1,2 @@
+$("#update_form").hide()
+$("#comment_section").append("<%= escape_javascript render partial: "comments/comment", locals: {comment: @comment} %>");

@@ -1,0 +1,21 @@
+<div class="card" style="width: 22rem;">
+  <div class="card-header">
+    Categories
+  </div>
+  <ul class="list-group list-group-flush">
+  <% categories.each do |category| %>
+    <%= link_to category.name , category_products_path(category.slug),  class: "list-group-item"  %>
+  <% end %>
+  </ul>
+</div>
+
+<div class="card mt-5" style="width: 22rem;">
+  <div class="card-header">
+    Brands
+  </div>
+  <ul class="list-group list-group-flush">
+    <% brands.each do |brand| %>
+      <%= link_to brand.name , brand_products_path(brand.slug),  class: "list-group-item"  %>
+    <% end %>
+  </ul>
+</div>

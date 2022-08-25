@@ -1,0 +1,9 @@
+<%= render "shared/seller_menu" %>
+<div class="col-md-8">
+<%= render "form", product: @product %>
+<%  @product.images.each do |img| %>
+ <td style="width:20px"><%= image_tag img, class: "img img-thumbnail" %></td>
+<% end %>
+
+</div>
+</div>

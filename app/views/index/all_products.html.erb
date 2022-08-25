@@ -1,0 +1,24 @@
+<div class="container-fluid">
+<h2 class="text-center mt-5">All Products</h2>
+<section class="product mt-5 mb-5">
+<div class="row">
+<div class="col-md-3">
+<%= render 'shared/side_menu', categories: @categories, brands: @brands %>
+
+</div>
+<div class="col-md-9">
+<div class="row">
+
+<% if @products.count > 0 %>
+  <% @products.each do |product|%>
+    <%= render "shared/product", model: product %>
+  <% end %>
+  </div>
+<% else %>
+  <h4>No Products Found</h4>
+<% end %>
+
+</div>
+</div>
+</div>
+</section>

@@ -1,0 +1,60 @@
+<section class="cart_items mt-5">
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-8">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Order ID</th>
+      <th scope="col">Image</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Order status</th>
+      <th scope="col">Delivery status</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @order_items.each do |item| %>
+  <tr id="product<%= item.id %>">
+  <td>#</td>
+
+  <td><%= item.order.order_id %></td>
+  <% if item.product.main_image.attached? %>
+  <td style="width:20px"><%= image_tag item.product.main_image, class: "img img-thumbnail" %></td>
+  <% else %>
+  <td><p>No image</p></td>
+  <% end %>
+
+  <td><%= item.product.name %></td>
+  <td><%= item.quantity %></td>
+
+  <td><div class="badge badge-success"><%= item.order.status %></div></td>
+  <td><div class="badge badge-primary"><%= item.status %></div></td>
+
+  <td id="product_price<%= item.id %>"><%= number_to_currency(item.product.price) %></td>
+
+  <td>
+   <div class="form-group">
+
+    <%= form_with url:  order_product_status_path(), method: :post do |form| %>
+    <%= form.hidden_field :item_id, value: item.id %>
+    <%= form.label :status %><br>
+    <%= form.select(:status,  ["draft", "pending", "processing", "delivered"], {}, { :class => 'form-control' }) %>
+    <%= form.submit %>
+    <% end %>
+  </div>
+  </td>
+  </tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+</div>
+</div>
+
+</section>
