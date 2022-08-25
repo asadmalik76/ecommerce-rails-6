@@ -1,0 +1,45 @@
+<section class="cart_items mt-5">
+<div class="row">
+<div class="col-md-4">
+</div>
+
+
+<div class="col-md-8">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @cart_items.each do |item| %>
+  <tr>
+  <td>#</td>
+  <% if item.product.main_image.attached? %>
+      <td style="width:20px"><%= image_tag product.main_image, class: "img img-thumbnail" %></td>
+  <% else %>
+      <td><p>No image</p></td>
+  <% end %>
+
+  <td><%= item.product.name %></td>
+
+  <td><%= item.product.category.name %></td>
+
+  <td><%= item.product.price %></td>
+
+  <td><%= item.product.quantity %></td>
+
+  <td><%= item.product.brand.name %></td>
+  </td>
+  </tr>
+  <% end %>
+
+  </tbody>
+</table>
+</div>
+</div>
+
+</section>

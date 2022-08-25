@@ -1,0 +1,5 @@
+<%= form_for @comment, remote: true do |f| %>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<%= f.text_field :content %>
+<%= f.submit 'Create' %>
+<% end %>

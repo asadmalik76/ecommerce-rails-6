@@ -1,0 +1,33 @@
+<%= render "shared/seller_menu" %>
+<div class="col-md-10">
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+<%= link_to "New Brand", new_brand_path,  class: "btn btn-success mb-1"  %>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @brands.each do |brand| %>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= brand.name %></td>
+      <td class="d-flex">
+
+<%= link_to "Edit", edit_brand_path(brand), class: "btn btn-success btn-sm" %>
+  <%= button_to "Delete",  brand_path(brand), method: :delete, class: "btn btn-warning btn-sm"  %>
+
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>

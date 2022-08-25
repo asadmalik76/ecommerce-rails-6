@@ -1,0 +1,35 @@
+<div class="col-md-10">
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Order ID</th>
+      <th scope="col">status</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @orders.each do |order, i| %>
+    <tr>
+      <td scope="row"><%= i %></td>
+      <td><%= order.order_id %></td>
+      <td><span class="badge badge-primary"><%= order.status %></span></td>
+      <td><%=  number_to_currency(order.amount) %></td>
+      <td>
+      <%= link_to "View", order_path(order.order_id), class: "btn btn-success btn-sm" %>
+      <% if order.status == "draft" %>
+        <%= button_to "Delete",  order_path(order), method: :delete, class: "btn btn-warning btn-sm"  %>
+      <% end %>
+      </td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>

@@ -1,0 +1,18 @@
+
+
+<div class="comment p-2" id="comment<%= comment.id %>">
+	<div class="d-flex flex-row align-items-center">
+		<div class="d-flex flex-column ml-1 comment-profile">
+			<div class="comment-ratings"></div> <span class="username"> <b> <%= comment.user.full_name %> &nbsp  </b></span>
+			</div>
+			<div class="text "><%= comment.content %></div>
+	</div>
+<span class="text-muted"><%= comment.created_at.strftime("%Y-%m-%d") %></span>
+
+<% if user_signed_in? and comment.user == current_user  %>
+<%= link_to "Edit", edit_product_comment_path(comment.product_id,comment.id ), remote: true, class: "btn btn-link btn-sm" %>
+
+<%= link_to "Delete", product_comment_path(comment.product_id, comment.id ), remote: true, method: "delete" , class: "btn btn-link btn-sm" %>
+<% end  %>
+</div>
+<hr>
