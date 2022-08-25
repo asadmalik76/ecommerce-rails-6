@@ -11,6 +11,7 @@ class Product < ApplicationRecord
   has_many_attached :images
   has_many :comments
   validates :description, length: { minimum: 50, message: ' must be greater than 50 characters' }
+  validates :name, presence: true
   before_save :add_slug
   before_create :add_sku
   def add_sku
