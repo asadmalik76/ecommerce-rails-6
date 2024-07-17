@@ -6,7 +6,7 @@ gem "byebug"
 gem 'devise'
 gem "pundit"
 gem "rolify"
-gem 'rubocop'
+gem 'rubocop', '>= 1.35.1'
 gem 'stripe'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -62,9 +62,9 @@ group :test do
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
   gem 'shoulda-context'
-  gem 'selenium-webdriver', '>= 4.0.0.rc1'
+  gem 'selenium-webdriver', '>= 4.5.0'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+  gem 'webdrivers', '>= 5.1.0'
   gem 'faker'
 end
 
