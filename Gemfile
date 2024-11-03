@@ -6,7 +6,7 @@ gem "byebug"
 gem 'devise'
 gem "pundit"
 gem "rolify"
-gem 'rubocop'
+gem 'rubocop', '>= 1.66.0'
 gem 'stripe'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
