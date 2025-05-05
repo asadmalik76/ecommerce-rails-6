@@ -56,7 +56,7 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'simplecov'
   gem 'factory_bot'
-  gem 'rspec-rails', '~> 4.0.1'
+  gem 'rspec-rails', '~> 8.0.0'
   gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.4'
   gem 'shoulda'
   gem 'rails-controller-testing'
